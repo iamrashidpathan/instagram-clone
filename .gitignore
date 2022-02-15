@@ -24,4 +24,4 @@ yarn-error.log*
 
 
 # creds
-#/src/lib
+/src/lib/fibase.js
