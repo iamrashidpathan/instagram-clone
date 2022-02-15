@@ -24,4 +24,4 @@ yarn-error.log*
 
 
 # creds
-/src/lib/firebase.js
+/src/lib/
