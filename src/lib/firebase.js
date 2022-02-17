@@ -13,7 +13,7 @@ import {initializeApp} from 'firebase/app'
 // import { seedDatabase } from './seed';
 
 const firebaseConfig = {
-  //CREDS
+  
 };
 
 const firebase =initializeApp(firebaseConfig);

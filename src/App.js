@@ -1,8 +1,10 @@
 import './App.css';
 
 import React, { useEffect, useState, lazy, Suspense } from 'react';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
 import * as ROUTES from "./constants/routes"
+import UserContext from './context/user';
+import useAuthListener from './hooks/use-auth-listener';
 
 import {firebasedb, FieldValues} from './lib/firebase';
 import {collection, doc, getDocs} from 'firebase/firestore'
@@ -16,27 +18,31 @@ const NotFound = lazy(() => import ('./pages/not-found'));
 
 function App() {
   
+  const {user} = useAuthListener();
   
   return (
-    <div>
-      
-      <Router>
-        <Suspense fallback = {<p>Loading</p>}>
-          <Routes>
-              <Route path={ROUTES.DASHBOARD} element={<Dashboard/>} exact></Route>
-              <Route path={ROUTES.LOGIN} element={<Login/>}></Route>
-              <Route path={ROUTES.NOT_FOUND} element={<NotFound/>}></Route>
-              <Route path={ROUTES.PROFILE} element={<Profile/>}></Route>
-              <Route path={ROUTES.SIGN_UP} element={<SignUp/>}></Route>
-          </Routes>
-          
-        </Suspense>
-      </Router>
-      
-      
-      
-      
-    </div>
+    <UserContext.Provider value={{user}}>
+        <div>
+        
+        <Router>
+          <Suspense fallback = {<p>Loading</p>}>
+            <Routes>
+                
+                <Route path={ROUTES.DASHBOARD} element={<Dashboard/>} exact></Route>
+                <Route path={ROUTES.LOGIN} element={<Login/>}></Route>
+                <Route path={ROUTES.PROFILE} element={<Profile/>}></Route>
+                <Route path={ROUTES.SIGN_UP} element={<SignUp/>}></Route>
+                <Route path={ROUTES.NOT_FOUND} element={<NotFound/>}></Route>
+                <Route path="*" element={<NotFound/>}/>
+                              
+            </Routes>
+            
+          </Suspense>
+        </Router>
+        
+      </div>
+    </UserContext.Provider>
+    
     
   );
 }

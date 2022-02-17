@@ -6,7 +6,7 @@ import * as ROUTES from "../constants/routes"
 import FirebaseContext from '../context/firebase';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import {collection, addDoc, getFirestore} from 'firebase/firestore'
-import doesUsernameExist from '../services/firebase';
+import {doesUsernameExist} from '../services/firebase';
 export default function SignUp() {
 
     useEffect(() => {
