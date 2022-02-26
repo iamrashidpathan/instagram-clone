@@ -7,7 +7,7 @@ import FirebaseContext from "../context/firebase";
 import UserContext from "../context/user";
 import useUser from "../hooks/use-user"
 
-export default function Header(){
+function Header(){
     const {firebase} = useContext(FirebaseContext)
     const {user} = useContext(UserContext)
     //const activeUser = useUser()
@@ -30,7 +30,7 @@ export default function Header(){
     }
 
     return (
-        <header className="border-b border-solid flex justify-around items-center">
+        <header className="border-b border-solid flex justify-around items-center sticky top-0 bg-white">
             <h1>
                 <Link to={ROUTES.DASHBOARD}>
                     <img src = "/images/logo.png" alt="Instagram" className="my-5 h-8"/>
@@ -81,3 +81,5 @@ export default function Header(){
         
     )
 }
+
+export default React.memo (Header)

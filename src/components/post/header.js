@@ -1,7 +1,7 @@
 import React from "react";
-import { getUserByUserId } from "../../services/firebase";
+
 import {Link, Route} from 'react-router-dom'
-import * as ROUTE from "../../constants/routes"
+
 
 
 export default function Header({photoUsername}){

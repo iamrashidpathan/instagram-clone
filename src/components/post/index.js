@@ -5,7 +5,7 @@ import Image from './image';
 import Actions from './actions';
 import Footer from './footer';
 import Comments from './comments';
-import AddComment from './add-comment';
+
 
 export default function Post({ photoContent }) {
     const commentInput = useRef(null)

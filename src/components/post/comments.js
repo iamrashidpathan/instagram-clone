@@ -5,7 +5,7 @@ import {formatDistance} from "date-fns"
 import AddComment from "./add-comment";
 
 export default function Comments({docId, comments, posted, commentInput}){
-    console.log(docId, comments)
+    //console.log(docId, comments)
     //console.log(comments)
     const [allComents, setAllComents] = useState(comments)
     const [displayAllComments, setDisplayAllComments] = useState(false)
@@ -17,7 +17,7 @@ export default function Comments({docId, comments, posted, commentInput}){
              <span>{comm.comment}</span>
         </div>    
     ))
-    console.log(docId)
+    //console.log(docId)
     return(
         <div className="ml-4 mt-2">
             {diplayComments.length >=2 && 
