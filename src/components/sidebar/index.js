@@ -16,7 +16,11 @@ export default function Sidebar(){
                     username={username}
                     fullname={fullName}
                 />
-                <Suggestions/>
+                <Suggestions 
+                    userId={userId}
+                    following={following}
+                    loggedInUserDocId={docId}
+                />
                 <p className="text-sm mt-8 text-gray-400">© 2022 INSTAGRAM-CLONE FROM RASHID</p>
                 
             </div>

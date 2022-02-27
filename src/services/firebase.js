@@ -2,6 +2,7 @@
 
 import { async } from "@firebase/util";
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import user from "../components/sidebar/user";
 import { firebase } from "../lib/firebase";
 
 const db = getFirestore(firebase);
@@ -58,4 +59,24 @@ export async function getUserFollowedPhotos(userId, followingUserIds){
     )
 
     return photosWithUserDetails
+}
+
+
+export async function getSuggestedProfiles(userId, following){
+    let q = collection(db, 'users')
+    if(following.length >0){
+        q =query(usersCollectionRef, where("userId", "not-in", [...following, userId]))
+    }
+    else{
+        q = query(usersCollectionRef, where('userId', '!=', userId))
+    }
+
+    const result = await getDocs(q)
+    const profiles =result.docs.map((user)=>({
+        ...user.data(),
+        docId: user.id
+    }))
+    //console.log(profiles)
+    return profiles
+
 }
